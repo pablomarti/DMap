@@ -1,0 +1,17 @@
+/.bundle
+/db/*.sqlite3
+/log/*.log
+/tmp
+pkg/
+config/database.yml
+*.DS_Store
+db/schema.rb
+Gemfile.lock
+public/assets
+.powenv
+tmp/restart.txt
+.rvmrc
+test/dummy/db/*.sqlite3
+test/dummy/log/*.log
+test/dummy/tmp/
+test/dummy/.sass-cache
