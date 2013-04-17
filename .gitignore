@@ -16,3 +16,5 @@ test/dummy/log/*.log
 test/dummy/tmp/
 test/dummy/.sass-cache
 test/dummy/config/fb_config.yml
+test/dummy/solr/
+test/dummy/log/sunspot-solr-development.log.lck
