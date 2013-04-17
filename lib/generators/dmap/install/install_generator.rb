@@ -11,6 +11,9 @@ module Dmap
 
       def run_other_generators
         generate "simple_user:install"
+        generate "acts_as_taggable_on:migration"
+        generate "friendly_id"
+        generate "sunspot_rails:install"
       end
 
       def copy_migrations

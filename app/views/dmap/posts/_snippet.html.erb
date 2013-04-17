@@ -1,0 +1,4 @@
+<div>
+	<strong><%= snippet.language.title %></strong>
+	<%= raw Pygments.highlight(snippet.content, lexer: snippet.language.title.downcase) %>
+</div>

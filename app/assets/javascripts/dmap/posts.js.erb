@@ -1,0 +1,56 @@
+/* https://github.com/harvesthq/chosen/pull/166 */
+//Chosen
+/*$(function() {
+  $("#post_category_id").chosen();
+  
+  $("#post_tag_list").chosen({
+    create_option: true,
+    persistent_create_option: true,
+    create_option_text: 'Create category'
+  });
+
+});
+*/
+$(function() {
+	$.ajax({
+	    type: "GET",
+	    dataType: 'json',
+	    url: "/get_all_tags",
+	    success: function (data) {
+	    	$("#post_tag_list").select2({tags: data });
+	    }
+	});
+});
+
+/*
+
+Chosen
+http://railscasts.com/episodes/258-token-fields-revised
+
+jQuery
+http://harvesthq.github.com/chosen/
+https://github.com/harvesthq/chosen
+https://github.com/harvesthq/chosen/pull/166
+
+Rails
+https://github.com/tsechingho/chosen-rails
+https://github.com/tsechingho/chosen-rails/issues/9
+
+----------------------------------------------------------
+
+Alternatives
+
+Token Input
+http://loopj.com/jquery-tokeninput/
+https://github.com/leonkenneth/jquery-tokeninput-bootstrap-theme
+https://github.com/fw-coder/jQuery-TokenInput-Bootstrap-CSS-Theme
+
+Select2 (based on Chosen)
+http://ivaynberg.github.com/select2/
+https://github.com/ivaynberg/select2
+
+Select2Rails
+https://rubygems.org/gems/select2-rails
+https://github.com/argerim/select2-rails
+
+*/

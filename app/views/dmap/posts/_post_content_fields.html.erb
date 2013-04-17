@@ -1,0 +1,10 @@
+<fieldset>
+	<%= f.association :language, label: "Lenguaje", :include_blank => false, :input_html => { :class => "select_language" } %>
+	<%= f.input :content, label: "Snippet", input_html: {:class => "input-xxlarge"} %>
+	
+	<% f.input :_destroy, as: :boolean, label: "Eliminar Snippet"  %>
+  	
+  	<%= f.hidden_field :_destroy %>
+  	<%= link_to "Eliminar Snippet", '#', class: "remove_fields" %>
+  	<br /><br />
+</fieldset>

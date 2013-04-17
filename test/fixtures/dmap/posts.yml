@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  category: 
+  user: 
+  title: MyString
+  description: MyText
+  description_short: MyString
+  active: false
+  published_at: 2013-04-11 20:06:11
+  state: MyString
+  slug: MyString
+
+two:
+  category: 
+  user: 
+  title: MyString
+  description: MyText
+  description_short: MyString
+  active: false
+  published_at: 2013-04-11 20:06:11
+  state: MyString
+  slug: MyString

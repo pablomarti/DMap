@@ -9,5 +9,26 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require select2
+ *= require posts
+ *= require pygments
+ *= require bootstrap.min
+ *= require bootstrap_icons
+ = require_tree .
  */
+
+div.form-search{
+	text-align: right;
+}
+
+.left{
+	float: left;
+}
+
+.right{
+	float: right;
+}
+
+.clear{
+	clear:both;
+}

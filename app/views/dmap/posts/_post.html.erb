@@ -1,0 +1,49 @@
+<div class="post_box">
+	<div>
+		<div class="container">
+			<div class="row">
+				<% if user_signed_in? %>
+					<div class="span1" style="width:20px; margin-top:23px;">
+						<%= render :partial => "favorite_box", :locals => {:id => post.id} %>
+					</div>
+				<% end %>
+
+				<div class="span8">
+					<h3>
+						<%= link_to post.title, post_path(post) %>
+					</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<p>
+		<% if post.description_short.present? %>
+			<%= post.description_short %>
+			<% if can? :update, post %>
+				<%= link_to "", edit_post_path(post), :class => 'icon-pencil' %>
+			<% end %>
+		<% else %>
+			<% if can? :update, post %>
+				<blockquote>
+					<%= link_to "", edit_post_path(post), :class => 'icon-pencil' %>
+				</blockquote>
+			<% end %>
+		<% end %>
+
+		<div>
+			<em>
+				<%= render :partial => "date_element", :object => post  %>
+			</em>
+		</div>
+	</p>
+	
+	<% if !post.tag_list.empty? %>
+		<div>
+			<span class="icon-tags"></span>
+			<%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+		</div>
+	<% end %>
+	
+	<hr />
+</div>

@@ -1,0 +1,11 @@
+<% if @title != "" %>
+	<h2><%= @title %></h2>
+<% end %>
+
+<div>
+  <%= render :partial => "post", :collection => @posts %>
+</div>
+
+<div>
+	<%= will_paginate @posts, :container => false, :params => { :search => params[:search], :tag => params[:tag] } %>
+</div>

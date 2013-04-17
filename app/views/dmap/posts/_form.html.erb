@@ -1,0 +1,27 @@
+<%= simple_form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :category, label: "Categoria", :include_blank => false %>
+  
+  <%= f.input :title, label: "Titulo", input_html: {:class => "input-xlarge"} %>
+  <%= f.input :description_short, label: "Descripcion", input_html: {:class => "input-xlarge"} %>
+
+  <%= f.input :description, label: "Contenido",  :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'MyToolbar'} } %> 
+
+  <%= f.input :active, label: "Publico", as: :radio_buttons, collection: [['Si', true], ['No', false]], item_wrapper_class: 'inline' %>
+  <%#= f.input :active, :as => :radio, :collection => [["Yes", 1], ["No", 0]], :checked => 1 %>
+  
+  <% f.input :tag_list, collection: Post.tag_counts_on(:tags), input_html: { multiple: true } %>
+  <%= f.input :tag_list, label: "Tags", input_html: {:class => "input-xlarge"} %>
+
+  <%= f.fields_for :post_contents do |builder| %>
+    <%= render 'post_content_fields', f: builder %>
+  <% end %>
+
+  <%= link_to_add_fields("Agregar Snippet", f, :post_contents) %>
+
+  <hr />
+  
+  <div class="form-actions">
+    <%= f.button :submit, "Guardar", :class => 'btn-primary' %>
+    <%= link_to "Cancelar", posts_path, :class => 'btn' %>
+  </div>
+<% end %>

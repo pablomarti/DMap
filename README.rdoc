@@ -1,3 +1,10 @@
 = Dmap
 
 This project rocks and uses MIT-LICENSE.
+
+= TODO: Check Simple Form config files
+- config/initializers/simple_form.rb
+- config/initializers/simple_form_bootstrap.rb
+- config/locales
+- config/locales/simple_form.en.yml
+- lib/templates/erb/scaffold/_form.html.erb

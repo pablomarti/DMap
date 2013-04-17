@@ -1,0 +1,115 @@
+<% second_hr = false %>
+
+<div class="post_box">
+  <div class="container">
+    <div class="row">
+      <% if user_signed_in? %>
+        <div class="span1" style="width:20px; margin-top:24px;">
+          <%= render :partial => "favorite_box", :locals => {:id => @post.id} %>
+        </div>
+      <% end %>
+
+      <div class="span8">
+        <h2><%= @post.title %></h2>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <% if @post.description.present? %>
+    <% second_hr = true %>
+    <div class="">
+      <%= sanitize @post.description %>
+    </div>
+  <% end %>
+
+  <% if !@post.post_contents.empty? %>
+    <%= render :partial => "snippet", :collection => @post.post_contents %>
+  <% end %>
+  
+  <% if !@post.tag_list.empty? %>
+    <% second_hr = true %>
+    <div>
+      <span class="icon-tags"></span>
+      <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    </div>
+  <% end %>
+
+  <div>
+    <em>
+      <%= render :partial => "date_element", :object => @post  %>
+    </em>
+  </div>
+
+  <br />
+  <div class="container">
+    <div class="row">
+      <div class="span1">
+        <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+      </div>
+
+      <div class="span1">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="neurock">Tweet</a>
+      </div>
+
+      <div class="span1">
+        <div class="g-plusone" data-size="medium"></div>
+      </div>
+    </div>    
+  </div>
+</div>
+
+<% if @similar_posts.length > 0 %>
+  <div>
+    <h3>Algunos articulos que te pueden interesar</h3>
+    <ul>
+      <% @similar_posts.each do |post| %>
+        <li><%= link_to post.title, post_path(post) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              posts_path, :class => 'btn'  %>
+
+  <% if can? :update, @post %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_post_path(@post), :class => 'btn' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                post_path(@post),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => '¿Seguro que quieres eliminar este articulo?')) },
+                :class => 'btn btn-danger' %>
+  <% end %>
+</div>
+
+<!-- Facebook -->
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=197696870255015";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Twitter -->
+<script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+<!-- Google +1 -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'es'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
